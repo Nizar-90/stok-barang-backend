@@ -24,6 +24,7 @@ app.get("/data-barang", (req, res) => {
   connection.query(
     "SELECT * FROM data_barang",
     function (error, results, fields) {
+      console.log(error)
       res.send(results);
     }
   );
@@ -74,9 +75,7 @@ app.put("/data-barang/:id_barang", (req, res) => {
     let created_at= req.body.created_at;
     let updated_at= req.body.updated_at;
 
-  // UPDATE table_name
-  // SET column1 = value1, column2 = value2, ...
-  // WHERE condition;
+
 
   connection.query(
     'UPDATE data_barang SET id_barang =? , id_kategori=? , nama_barang =? , foto_barang =?, deskripsi =? , jumlah_barang =? , harga_barang =?, created_at=?,  WHERE id_barang =?, updated_at=?',[id_barang,id_kategori,nama_barang,foto_barang,deskripsi,jumlah_barang,harga_barang,created_at,updated_at,id_barang],
