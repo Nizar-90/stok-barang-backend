@@ -20,7 +20,7 @@ app.use(cors());
 connection.connect();
 
 
-app.get("/data-barang", (req, res) => {
+app.get("/api/data-barang", (req, res) => {
   connection.query(
     "SELECT * FROM data_barang",
     function (error, results, fields) {
@@ -29,7 +29,7 @@ app.get("/data-barang", (req, res) => {
   );
 });
 
-app.post("/data-barang", (req, res) => {
+app.post("/api/data-barang", (req, res) => {
   let dataInputan = {
     id_barang: req.body.id_barang,
     id_kategori: req.body.id_kategori,
@@ -62,7 +62,7 @@ app.delete("/data-barang/:id_barang", (req, res) => {
   );
 });
 
-app.put("/data-barang/:id_barang", (req, res) => {
+app.put("/api/data-barang/:id_barang", (req, res) => {
 
     let id_barang = req.body.id_barang;
     let id_kategori = req.body.id_kategori;
@@ -88,5 +88,5 @@ app.put("/data-barang/:id_barang", (req, res) => {
 });
 
 app.listen(3004, () => {
-  console.log("backend run....");
+  console.log("backend run.... http://localhost:3004");
 });
