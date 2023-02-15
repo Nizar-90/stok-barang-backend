@@ -5,7 +5,10 @@ const cors = require("cors");
 
 const mysql = require("mysql");
 
+require('dotenv').config();
+
 const app = express();
+
 
 var connection = mysql.createConnection({
   host: process.env.DATABARANG_DBHOST,
@@ -53,7 +56,7 @@ app.post("/api/data-barang", (req, res) => {
   );
 });
 
-app.delete("/data-barang/:id_barang", (req, res) => {
+app.delete("/api/data-barang/:id_barang", (req, res) => {
   connection.query(
     `DELETE FROM data_barang WHERE id_barang = '${req.params.id_barang}'`,
     (error, results) => {
@@ -78,7 +81,7 @@ app.put("/api/data-barang/:id_barang", (req, res) => {
 
 
   connection.query(
-    'UPDATE data_barang SET id_barang =? , id_kategori=? , nama_barang =? , foto_barang =?, deskripsi =? , jumlah_barang =? , harga_barang =?, created_at=?,  WHERE id_barang =?, updated_at=?',[id_barang,id_kategori,nama_barang,foto_barang,deskripsi,jumlah_barang,harga_barang,created_at,updated_at,id_barang],
+    'UPDATE data_barang SET id_barang =? , id_kategori=? , nama_barang =? , foto_barang =?, deskripsi =? , jumlah_barang =? , harga_barang =?, created_at=?,  updated_at=? WHERE id_barang =?',[id_barang,id_kategori,nama_barang,foto_barang,deskripsi,jumlah_barang,harga_barang,created_at,updated_at,id_barang],
     (error, results) => {
       console.log(error);
       res.send(results);
