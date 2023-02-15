@@ -8,10 +8,10 @@ const mysql = require("mysql");
 const app = express();
 
 var connection = mysql.createConnection({
-  host: "5.181.216.42",
-  user: "u1084987_kelompok_3",
-  password: "f2d7tvdcjvi7",
-  database: "u1084987_kelompok_3",
+  host: process.env.DATABARANG_DBHOST,
+  user: process.env.DATABARANG_DBUSER,
+  password: process.env.DATABARANG_DBPASSWORD,
+  database: process.env.DATABARANG_DBNAME,
 });
 
 app.use(bodyParser.json());
